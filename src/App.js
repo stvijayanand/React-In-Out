@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
 import UserOutput from './UserOutput/UserOutput';
+import UserInput from './UserInput/UserInput';
 
 
 
 class App extends Component {
+  state = {
+    username: 'vijay'
+  }
+
+
+  changeUsernameHandler = (event) => {
+    this.setState({
+      username: event.target.value
+    });
+  }
+
+
   render() {
     return (
       <div className="App">
         
+      <UserInput change={this.changeUsernameHandler}></UserInput>
 
-      <UserOutput username='vijay'></UserOutput>
-      <UserOutput username='david'></UserOutput>
-      <UserOutput username='peter'></UserOutput>
+      <UserOutput username={this.state.username}></UserOutput>
+      <UserOutput username={this.state.username}></UserOutput>
+      <UserOutput username={this.state.username}></UserOutput>
       </div>
     );
   }
